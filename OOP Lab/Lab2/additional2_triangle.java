@@ -1,4 +1,4 @@
-public class triangle {
+public class additional2_triangle {
     public static void main(String[] args) {
         int rows = 10;
         int[][] A = new int[rows][];
