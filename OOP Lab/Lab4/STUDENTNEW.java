@@ -1,6 +1,6 @@
 import java.util.*;
 
-class STUDENTNEW {
+class STUDENTNEW{
     String sname;
     int[] marks_array;
 
