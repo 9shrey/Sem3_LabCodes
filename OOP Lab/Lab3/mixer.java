@@ -78,4 +78,5 @@ class mixer{
         result=m1.mix(m2);
         result.display();
 
-}}
+}
+}
