@@ -1,3 +1,4 @@
+//Credits: Keshav added Default Call
 import java.util.Scanner;
 
 class EMPLOYEENEW {
@@ -39,6 +40,12 @@ class EMPLOYEENEW {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        EMPLOYEENEW defaultEmployee = new EMPLOYEENEW();
+        System.out.println("Default Employee Details:");
+        defaultEmployee.display();
+        System.out.println("\nEid and Basic");
+        defaultEmployee.compute_net_sal();
+        
         System.out.print("Enter the number of employees: ");
         int N = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character
@@ -66,4 +73,3 @@ class EMPLOYEENEW {
         }
     }
 }
-
