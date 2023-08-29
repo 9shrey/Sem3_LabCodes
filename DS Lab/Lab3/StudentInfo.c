@@ -24,11 +24,6 @@ struct STUDENT {
 
 int main() {
     struct STUDENT *student = (struct STUDENT *)malloc(sizeof(struct STUDENT));
-    if (student == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;
-    }
-
     int month;
     student->dob.month = &month;
     student->stu_info.name = "John Doe";
