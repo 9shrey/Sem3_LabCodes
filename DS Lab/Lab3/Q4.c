@@ -38,19 +38,19 @@ int main(){
     scanf("%d", &p->stu_info->reg_no);
 
     printf("Enter name: ");
-    scanf("%s[^\n]", p->stu_info->name);
+    scanf("%s", p->stu_info->name);
     //gets(p->stu_info->name);
 
     printf("Enter address: ");
-    scanf("%s[^\n]", p->stu_info->address);
+    scanf("%s", p->stu_info->address);
     //gets(p->stu_info->address);
 
     printf("Enter college name: ");
-    scanf("%s[^\n]", p->college->college_name);
+    scanf("%s", p->college->college_name);
     //gets(p->college->college_name);
 
     printf("Enter University name: ");
-    scanf("%s[^\n]", p->college->university_name);
+    scanf("%s", p->college->university_name);
     //gets(p->college->university_name);
 
     printf("\nDisplaying entered data: \n");
