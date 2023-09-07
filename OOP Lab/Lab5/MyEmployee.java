@@ -1,9 +1,10 @@
-public class MyEmployee {
+import java.util.*;
+public class Emp1 {
     private int empId;
     private String firstName;
     private String lastName;
 
-    public MyEmployee(int empId, String firstName, String lastName) {
+    public Emp1(int empId, String firstName, String lastName) {
         this.empId = empId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,9 +36,12 @@ public class MyEmployee {
 
     public static void main(String[] args) {
         int empId = 1;
-        String firstName = "JOHN";
-        String lastName = "DOE";
-        MyEmployee employee = new MyEmployee(empId, firstName, lastName);
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter First Name: ");
+        String firstName = sc.nextLine();
+        System.out.println("Enter Last Name: ");
+        String lastName = sc.nextLine();
+        Emp1 employee = new Emp1(empId, firstName, lastName);
 
         String formattedName = employee.formatEmployeeName();
         String email = employee.generateEmail();
