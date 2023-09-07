@@ -1,9 +1,8 @@
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-class Student{
+class Student {
     private static int registrationCounter = 0;
-
     private int registrationNumber;
     private String fullName;
     private Date dateOfJoining;
@@ -35,32 +34,30 @@ class Student{
         System.out.println();
     }
 
-    public static void sortByName(List<Student> students) {
-        students.sort(Comparator.comparing(Student::getFullName));
+    public static void sortByName(Student[] students) {
+        Arrays.sort(students, Comparator.comparing(Student::getFullName));
     }
 
-    public static void sortBySemesterAndCGPA(List<Student> students) {
-        students.sort(Comparator.comparing(Student::getSemester).thenComparing(Student::getCgpa).reversed());
+    public static void sortBySemesterAndCGPA(Student[] students) {
+        Arrays.sort(students, Comparator.comparing(Student::getSemester).thenComparing(Student::getCgpa).reversed());
     }
 
-    public static List<Student> filterByStartingLetter(List<Student> students, char startingLetter) {
-        List<Student> filteredStudents = new ArrayList<>();
+    public static void listStudentsWithStartingLetter(Student[] students, char startingLetter) {
+        System.out.println("\n--- Students with Name Starting with '" + startingLetter + "' ---");
         for (Student student : students) {
             if (student.getFullName().charAt(0) == startingLetter) {
-                filteredStudents.add(student);
+                student.display();
             }
         }
-        return filteredStudents;
     }
 
-    public static List<Student> filterBySubstring(List<Student> students, String substring) {
-        List<Student> filteredStudents = new ArrayList<>();
+    public static void listStudentsWithSubstring(Student[] students, String substring) {
+        System.out.println("\n--- Students with Name Containing '" + substring + "' ---");
         for (Student student : students) {
             if (student.getFullName().contains(substring)) {
-                filteredStudents.add(student);
+                student.display();
             }
         }
-        return filteredStudents;
     }
 
     public void changeNameToInitials() {
@@ -85,10 +82,8 @@ class Student{
         return cgpa;
     }
 
-
- public static void main(String[] args) {
-        List<Student> students = new ArrayList<>();
-
+    public static void main(String[] args) {
+        Student[] students = new Student[5];
         Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < 5; i++) {
@@ -112,40 +107,37 @@ class Student{
 
             System.out.print("Enter CGPA: ");
             float cgpa = scanner.nextFloat();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             Student student = new Student(fullName, dateOfJoining, semester, gpa, cgpa);
-            students.add(student);
+            students[i] = student;
         }
+
         System.out.println("\n--- Student Records ---");
         for (Student student : students) {
             student.display();
         }
-        Student.sortBySemesterAndCGPA(students);
+
+        sortBySemesterAndCGPA(students);
         System.out.println("\n--- Sorted by Semester and CGPA ---");
         for (Student student : students) {
             student.display();
         }
 
-        Student.sortByName(students);
+        sortByName(students);
         System.out.println("\n--- Sorted by Name ---");
         for (Student student : students) {
             student.display();
         }
+
         System.out.print("Enter a starting letter to filter students: ");
         char startingLetter = scanner.nextLine().charAt(0);
-        List<Student> filteredStudentsByLetter = Student.filterByStartingLetter(students, startingLetter);
-        System.out.println("\n--- Students with Name Starting with '" + startingLetter + "' ---");
-        for (Student student : filteredStudentsByLetter) {
-            student.display();
-        }
+        listStudentsWithStartingLetter(students, startingLetter);
+
         System.out.print("Enter a substring to filter students: ");
         String substring = scanner.nextLine();
-        List<Student> filteredStudentsBySubstring = Student.filterBySubstring(students, substring);
-        System.out.println("\n--- Students with Name Containing '" + substring + "' ---");
-        for (Student student : filteredStudentsBySubstring) {
-            student.display();
-        }
+        listStudentsWithSubstring(students, substring);
+
         for (Student student : students) {
             student.changeNameToInitials();
         }
@@ -153,6 +145,7 @@ class Student{
         for (Student student : students) {
             student.display();
         }
+
         scanner.close();
     }
 }
