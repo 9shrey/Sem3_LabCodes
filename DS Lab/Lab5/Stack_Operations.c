@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #define Stack_SIZE 10
+
 typedef struct STACK
 {
     char arr[Stack_SIZE];
@@ -13,16 +14,17 @@ int isEmpty(STACK s)
 {
     return s.tos == -1;
 }
+
 int isFull(STACK s)
 {
-    return s.tos == Stack_SIZE-1;
+    return s.tos == Stack_SIZE - 1;
 }
 
 void push(STACK *s, char n)
 {
     if (isFull(*s))
     {
-        printf("STACK Overlfow, Terminating\n");
+        printf("STACK Overflow, Terminating\n");
         return;
     }
     else
@@ -49,32 +51,40 @@ void display(STACK s)
     printf("[ ");
     for (int i = 0; i <= s.tos; i++)
         printf("%c ", s.arr[i]);
-    printf("\n");
+    printf("]\n");
 }
 
 int main()
 {
-
-    int input;
+    int input = 0;
     STACK *s;
-    s=malloc(sizeof(s));
+    s = malloc(sizeof(STACK));
+
+    if (s == NULL)
+    {
+        printf("Memory allocation failed. Exiting.\n");
+        return 1;
+    }
+
+    s->tos = -1; // Initialize the tos member
+
     while (input != 3)
     {
-        printf("Do you want to push, pop or exit? (1/2/3) ");
-        scanf("%d", &input);
+        printf("Do you want to push, pop, or exit? (1/2/3) ");
+        scanf(" %d", &input);
         char out;
         switch (input)
         {
         case 1:
             printf("Enter the character to push: ");
             char in;
-            scanf("%c %c",&in,&in);
+            scanf(" %c", &in);
             push(s, in);
             display(*s);
             break;
         case 2:
             out = pop(s);
-            printf("Popped %c \n", out);
+            printf("Popped %c\n", out);
             display(*s);
             break;
 
@@ -86,4 +96,4 @@ int main()
         }
     }
     free(s);
-} 
+}
