@@ -1,8 +1,11 @@
 For lab7q1:
 type in terminal: 
 javac -d . Building.java
+
 javac -d . House.java
+
 javac -d . School.java
+
 
 For lab7q2:
 use in terminal:
