@@ -1,5 +1,6 @@
 For lab7q1:
 type in terminal: 
+
 javac -d . Building.java
 
 javac -d . House.java
