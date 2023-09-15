@@ -10,6 +10,7 @@ javac -d . School.java
 
 For lab7q2:
 use in terminal:
+
 javac -d . Maximum.java
 
 This will compile and place .class file in the package folder
