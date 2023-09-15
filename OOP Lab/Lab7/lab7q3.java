@@ -1,63 +1,49 @@
 import java.util.Scanner;
 
-interface Sports {
-    void putGrade(int a);
-    int getGrade();
+interface Series {
+    int getNext();
+    void reset();
+    void setStart(int a);
 }
 
-class Student {
-    int num,marks;
-
-    Student(int n, int m) {
-        putNumber(n);
-        putMarks(m);
+class ByTwos implements Series {
+    int a;
+    public int getNext() {
+        a+=2;
+        return (a);
     }
-
-    void putNumber(int a) {
-        num = a;
+    public void setStart(int x) {
+        a = x;
     }
-    void putMarks(int a) {
-        marks = a;
-    }
-    int getNumber() {
-        return num;
-    }
-    int getMarks() {
-        return marks;
-    }
-}
-class Result extends Student implements Sports {
-    int sportsGrade;
-
-    Result(int n, int m, int s) {
-        super(n,m);
-        putGrade(s);
-    }
-
-    public void putGrade(int a) {
-        sportsGrade = a;
-    }
-    public int getGrade() {
-        return sportsGrade;
-    }
-    public void display() {
-        System.out.println("Roll Number: "+getNumber()+"\nMarks: "+getMarks()+"\nSports Grade: "+getGrade());
+    public void reset() {
+        a = 0;
     }
 }
 
-
-public class Q4Student {
+public class lab7q3 {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter roll number ");
-        int n = sc.nextInt();
-        System.out.print("Enter marks ");
-        int m = sc.nextInt();
-        System.out.print("Enter sports grade ");
-        int s = sc.nextInt();
-        Result st = new Result(n, m, s);
-        System.out.println("\nDisplaying results:");
-        st.display();
+        System.out.println("Default start is set as 0");
+        ByTwos obj = new ByTwos();
+        obj.setStart(0);
+        int inp=-1;
+        System.out.print("1.Get Next, 2.Reset, 3.Set Start");
+        do {
+            System.out.print("\nEnter choice ");
+            inp = sc.nextInt();
+            if (inp == 1) 
+                System.out.print(obj.getNext());
+            else if(inp == 2) {
+                obj.reset();
+                System.out.println("Series was reset");
+            }
+            else if(inp == 3) {
+                System.out.print("Enter start ");
+                obj.setStart(sc.nextInt());
+            }
+            else {
+                inp = -1;
+            }
+        } while(inp != -1);
     }
 }
